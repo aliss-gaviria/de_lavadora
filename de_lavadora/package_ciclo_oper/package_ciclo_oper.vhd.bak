@@ -1,0 +1,11 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+package package_ciclo_oper is
+component ciclo_oper 
+    port(
+        finalizado: in std_logic;
+        ciclo: out integer range 0 to 14
+    );
+end component;
+end package_ciclo_oper;

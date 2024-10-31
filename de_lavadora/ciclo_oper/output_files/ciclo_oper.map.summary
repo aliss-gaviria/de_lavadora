@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Oct 24 17:35:55 2024
+Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Revision Name : ciclo_oper
+Top-level Entity Name : ciclo_oper
+Family : Cyclone III
+Total logic elements : 4
+    Total combinational functions : 4
+    Dedicated logic registers : 4
+Total registers : 4
+Total pins : 5
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

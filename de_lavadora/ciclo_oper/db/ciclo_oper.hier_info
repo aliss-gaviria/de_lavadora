@@ -1,0 +1,11 @@
+|ciclo_oper
+finalizado => fin[0].CLK
+finalizado => fin[1].CLK
+finalizado => fin[2].CLK
+finalizado => fin[3].CLK
+ciclo[0] <= fin[0].DB_MAX_OUTPUT_PORT_TYPE
+ciclo[1] <= fin[1].DB_MAX_OUTPUT_PORT_TYPE
+ciclo[2] <= fin[2].DB_MAX_OUTPUT_PORT_TYPE
+ciclo[3] <= fin[3].DB_MAX_OUTPUT_PORT_TYPE
+
+

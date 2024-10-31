@@ -1,0 +1,8 @@
+library ieee;
+use ieee.std_logic_1164.all;
+entity de_lavadora is
+port ();
+end de_lavadora;
+architecture arch_lavadora of de_lavadora is 
+begin
+end arch_lavadora;

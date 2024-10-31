@@ -1,0 +1,16 @@
+|de_lavadora
+encendido => ~NO_FANOUT~
+lleno => ~NO_FANOUT~
+cerrado => ~NO_FANOUT~
+clk => ~NO_FANOUT~
+llenado <= llenado.DB_MAX_OUTPUT_PORT_TYPE
+vaciado <= vaciado.DB_MAX_OUTPUT_PORT_TYPE
+giro[0] <= giro[0].DB_MAX_OUTPUT_PORT_TYPE
+giro[1] <= giro[1].DB_MAX_OUTPUT_PORT_TYPE
+giro[2] <= giro[2].DB_MAX_OUTPUT_PORT_TYPE
+velocidad[0] <= velocidad[0].DB_MAX_OUTPUT_PORT_TYPE
+velocidad[1] <= velocidad[1].DB_MAX_OUTPUT_PORT_TYPE
+velocidad[2] <= velocidad[2].DB_MAX_OUTPUT_PORT_TYPE
+alarma <= comb.DB_MAX_OUTPUT_PORT_TYPE
+
+

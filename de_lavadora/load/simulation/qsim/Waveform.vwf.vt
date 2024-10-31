@@ -1,0 +1,219 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "10/22/2024 15:17:43"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    load
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module load_vlg_sample_tst(
+	clk,
+	load,
+	reset,
+	sampler_tx
+);
+input  clk;
+input  load;
+input  reset;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(clk or load or reset)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module load_vlg_check_tst (
+	pulse_out,
+	sampler_rx
+);
+input  pulse_out;
+input sampler_rx;
+
+reg  pulse_out_expected;
+
+reg  pulse_out_prev;
+
+reg  pulse_out_expected_prev;
+
+reg  last_pulse_out_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:1] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 1'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	pulse_out_prev = pulse_out;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	pulse_out_expected_prev = pulse_out_expected;
+end
+
+
+
+// expected pulse_out
+initial
+begin
+	pulse_out_expected = 1'bX;
+end 
+// generate trigger
+always @(pulse_out_expected or pulse_out)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected pulse_out = %b | ",pulse_out_expected_prev);
+	$display("| real pulse_out = %b | ",pulse_out_prev);
+`endif
+	if (
+		( pulse_out_expected_prev !== 1'bx ) && ( pulse_out_prev !== pulse_out_expected_prev )
+		&& ((pulse_out_expected_prev !== last_pulse_out_exp) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port pulse_out :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", pulse_out_expected_prev);
+		$display ("     Real value = %b", pulse_out_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_pulse_out_exp = pulse_out_expected_prev;
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module load_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg clk;
+reg load;
+reg reset;
+// wires                                               
+wire pulse_out;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+load i1 (
+// port map - connection between master ports and signals/registers   
+	.clk(clk),
+	.load(load),
+	.pulse_out(pulse_out),
+	.reset(reset)
+);
+
+// clk
+always
+begin
+	clk = 1'b0;
+	clk = #5000 1'b1;
+	#5000;
+end 
+
+// load
+initial
+begin
+	load = 1'b0;
+	load = #45000 1'b1;
+	load = #225000 1'b0;
+	load = #315000 1'b1;
+	# 45000;
+	repeat(4)
+	begin
+		load = 1'b0;
+		load = #45000 1'b1;
+		# 45000;
+	end
+	load = 1'b0;
+end 
+
+// reset
+initial
+begin
+	reset = 1'b0;
+end 
+
+load_vlg_sample_tst tb_sample (
+	.clk(clk),
+	.load(load),
+	.reset(reset),
+	.sampler_tx(sampler)
+);
+
+load_vlg_check_tst tb_out(
+	.pulse_out(pulse_out),
+	.sampler_rx(sampler)
+);
+endmodule
+

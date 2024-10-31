@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\alizz\OneDrive\Documentos\VHDL\load\simulation\qsim
+vload
+Z1 !s100 ARDARlog[F7BNZlfR6oLA1
+Z2 Ij9<Q2io09TPK<<[GCn=>G1
+Z3 V^8a>PO4n?K:j;Lm9A9Me91
+Z4 dC:\Users\alizz\OneDrive\Documentos\VHDL\load\simulation\qsim
+Z5 w1729628266
+Z6 8load.vo
+Z7 Fload.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|load.vo|
+Z10 o-work work -O0
+!i10b 1
+!s85 0
+Z11 !s108 1729628268.140000
+Z12 !s107 load.vo|
+!s101 -O0
+vload_vlg_check_tst
+!i10b 1
+Z13 !s100 bd@jGiGTE<nWUzoVcICP03
+Z14 IkXI=zTB`bj:0B`J0OgN?Q3
+Z15 V<iKFYBjNV6NP[9S;Di4MW0
+R4
+Z16 w1729628264
+Z17 8Waveform.vwf.vt
+Z18 FWaveform.vwf.vt
+L0 61
+R8
+r1
+!s85 0
+31
+Z19 !s108 1729628268.366000
+Z20 !s107 Waveform.vwf.vt|
+Z21 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R10
+vload_vlg_sample_tst
+!i10b 1
+Z22 !s100 CHELAXzQ?;zS8?YM_TYW[3
+Z23 IzHa1bmC25Mlh]YDYR?]IW0
+Z24 VkDF:QMlEmhHn]OU0g4IBE0
+R4
+R16
+R17
+R18
+L0 29
+R8
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R10
+vload_vlg_vec_tst
+!i10b 1
+!s100 7beM?=>1ch0hdNX770n5i0
+IaNHKzd:kWKGU;F_MjKXgK3
+Z25 V8o:L9d?M]QOD]]8i6^=?m1
+R4
+R16
+R17
+R18
+Z26 L0 156
+R8
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R10
